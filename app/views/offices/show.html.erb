@@ -3,10 +3,14 @@
 <h1>Offices#show</h1>
 <p>Find me in app/views/offices/show.html.erb</p>
 
-<p>
-  <strong>Name of Office in <%= @office.city %> </strong>
-  <%#= @office.name %>
-</p>
+<% if @office ==nil %>
+  <p>
+    <strong>No office available </strong>
+<% else %>
+    <strong>Name of Office in <%= @office.city %> </strong>
+  </p>
+<% end %>
+
 
 <p>
   <%= @office.description %>
@@ -26,13 +30,9 @@
 </p>
 
 <p>
-  <strong>Capacity:</strong>
-  <%= @office.max_capacity %>
-</p>
-
-<p>
   <strong>Total Price:</strong>
   <%= @office.price %>
 </p>
 
-<%= link_to 'Back', offices_path %>
+<%= link_to "delete this office", office_path %>
+<%= link_to 'Back to search', root_path %>

@@ -1,13 +1,15 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
+    <% if @offices.first.nil? %>
+      <h1> Any offices available </h1>
+    <% else %>
+      <h1>Available Offices in <%= @offices.first.city %></h1>
+      <% @offices.each do |office| %>
+      <h2> <%= link_to office.name, office_path(office) %></h2>
+      <p><%= office.city%>, <%= office.address %>, <%= office.price %> Euro per day </p>
+      <% end %>
+    <% end %>
 
-<h1>Offices#index</h1>
-<p>Find me in app/views/offices/index.html.erb</p>
-
-<% @offices.each do |office| %>
-<%= office.user.first_name %>
-<p>is browsing offices in:</p>
-<h2><%= link_to office.city, office_path(office) %></h2>
-<% end %>
+<%= link_to "Back to search", root_path %>
 
 </div>

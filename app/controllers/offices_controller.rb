@@ -2,7 +2,11 @@ class OfficesController < ApplicationController
 before_action :set_office, only: [:show, :edit, :update, :destroy]
 
   def index
-    @offices = Office.where(["city = ? and start_date < ? and end_date > ?", params[:search][:city], params[:search][:date].to_i, params[:search][:date].to_i])
+
+    date = Date.parse(params[:search][:date])
+    # params[:search][:date]
+    # Date.new(2001,2,3)
+    @offices = Office.where(["city = ? and start_date < ? and end_date > ?", params[:search][:city], date, date])
   end
 
   def show
@@ -11,9 +15,15 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   end
 
   def new
+    @user = current_user
+    @office = Office.new
   end
 
   def create
+    @office = Office.new(office_params)
+    @office.user = current_user
+    @office.save
+
   end
 
   def edit
@@ -23,6 +33,8 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
+    @office.destroy
+    redirect_to offices_path
   end
 
 private
@@ -36,5 +48,6 @@ private
   def office_params
     params.require(:office).permit(:city, :start_date, :end_date, :max_capacity, :price, :address, :description, :user_id)
   end
+
 
 end
