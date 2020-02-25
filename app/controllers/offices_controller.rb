@@ -19,18 +19,21 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
     @office = Office.new(office_params)
     @office.user = current_user
     @office.save
-
+    redirect_to office_path(@office)
   end
 
   def edit
   end
 
   def update
+    @office.update(office_params)
+    redirect_to office_path(@office)
   end
 
   def destroy
     @office.destroy
     redirect_to offices_path
+    redirect_to office_path(@office)
   end
 
 private
@@ -42,7 +45,7 @@ private
   end
 
   def office_params
-    params.require(:office).permit(:city, :start_date, :end_date, :max_capacity, :price, :address, :description, :user_id)
+    params.require(:office).permit(:city, :start_date, :end_date, :max_capacity, :price, :address, :description, :user_id, :name)
   end
 
 
