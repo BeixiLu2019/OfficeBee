@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
   def edit
   end
 
@@ -22,3 +23,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:bio, :email, :first_name, :last_name, :password )
     end
 end
+
