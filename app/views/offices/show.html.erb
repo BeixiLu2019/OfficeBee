@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Offices#show</h1>
-<p>Find me in app/views/offices/show.html.erb</p>
+<!-- <p>Find me in app/views/offices/show.html.erb</p> -->
 
 <p>
-  <strong>Name of Office in <%= @office.city %> </strong>
-  <%#= @office.name %>
+  <strong> <%= @office.name %> </strong>
+  <br>
+  Gorgeous new office space in <%= @office.city %>
 </p>
 
 <p>
@@ -27,13 +28,13 @@
 
 <p>
   <strong>Capacity:</strong>
-  <%= @office.max_capacity %>
+  <%= @office.max_capacity %> spaces left
 </p>
 
 <p>
   <strong>Total Price:</strong>
-  <%= @office.price %>
+  € <%= @office.price %>
 </p>
 
-<%= link_to "delete this office", office_path %>
+<%= link_to "delete this office", office_path %> |
 <%= link_to 'Back', offices_path %>
