@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to root_path
+    # sign_in(current_user, :bypass => true)
+    redirect_to user_path(current_user)
   end
 
   private
