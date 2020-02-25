@@ -1,0 +1,10 @@
+<%= simple_form_for [@user, @office] do |f| %>
+  <%= f.input :city, label: 'city' %>
+  <%= f.input :address, label: 'Address' %>
+  <%= f.input :start_date, label: 'Start date' %>
+  <%= f.input :end_date, label: 'Start date' %>
+  <%= f.input :max_capacity, label: 'Maximal Capacity' %>
+  <%= f.input :description, label: 'Please describe your office' %>
+  <%= f.input :price, label: 'Price' %>
+  <%= f.button :submit %>
+<% end %>
