@@ -6,8 +6,13 @@
 
 <% @offices.each do |office| %>
 <%= office.user.first_name %>
+  <% if office.photos.attached? %>
+    <% office.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+  <% end %>
+
 <p>is browsing offices in:</p>
 <h2><%= link_to office.city, office_path(office) %></h2>
 <% end %>
-
 </div>

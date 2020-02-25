@@ -45,7 +45,7 @@ private
   end
 
   def office_params
-    params.require(:office).permit(:city, :start_date, :end_date, :max_capacity, :price, :address, :description, :user_id, :name)
+    params.require(:office).permit(:city, :start_date, :end_date, :max_capacity, :price, :address, :description, :user_id, :name, photos: [])
   end
 
 

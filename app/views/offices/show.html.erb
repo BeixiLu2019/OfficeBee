@@ -3,7 +3,6 @@
 <h1>
   <strong><%= @office.name %> in <%= @office.city %> </strong>
 </h1>
-
 <p>
   <%= @office.description %>
 </p>
@@ -31,6 +30,13 @@
   <%= @office.price %> Euro
 </p>
 
-<%= link_to "delete this office", office_path, class:" btn btn-outline-primary" %>
-<%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %>
+<% if @office.photos.attached? %>
+  <% @office.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
+<p>
+<%= link_to "delete this office", office_path, class:" btn btn-outline-primary" %> |
+<%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |
 <%= link_to 'Back', offices_path, class:" btn btn-outline-primary" %>
+</p>
