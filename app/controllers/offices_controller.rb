@@ -29,6 +29,8 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
+    @office.destroy
+    redirect_to offices_path
   end
 
 private
