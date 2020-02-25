@@ -1,8 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
+require 'faker'
+
+Office.destroy_all if Rails.env.development?
+
+
+puts 'Creating 10 fake offices...'
+10.times do
+  office = Office.new(
+    name: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentences,
+    city: Faker::Address.city
+    address: Faker::Address.street_address,
+    start_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    end_date: Faker::Date.forward(days: 23),
+    max_capacity: rand(1..30),
+    price: rand(20..100)
+  )
+  office.save!
+end
+
+puts 'Finished!'
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
