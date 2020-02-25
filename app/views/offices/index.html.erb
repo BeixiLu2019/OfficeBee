@@ -2,12 +2,12 @@
   <p id="notice"><%= notice %></p>
 
 <h1>Offices#index</h1>
-<p>Find me in app/views/offices/index.html.erb</p>
+<!-- <p>Find me in app/views/offices/index.html.erb</p> -->
 
 <% @offices.each do |office| %>
-<%= office.user.first_name %>
-<p>is browsing offices in:</p>
-<h2><%= link_to office.city, office_path(office) %></h2>
+<%#= @office.name %>
+<p>☞ <strong><%= link_to office.name, office_path(office) %></strong></p>
+<br>
 <% end %>
 
 </div>
