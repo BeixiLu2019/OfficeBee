@@ -11,9 +11,15 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   end
 
   def new
+    @user = current_user
+    @office = Office.new
   end
 
   def create
+    @office = Office.new(office_params)
+    @office.user = current_user
+    @office.save
+
   end
 
   def edit
@@ -38,5 +44,6 @@ private
   def office_params
     params.require(:office).permit(:city, :start_date, :end_date, :max_capacity, :price, :address, :description, :user_id)
   end
+
 
 end
