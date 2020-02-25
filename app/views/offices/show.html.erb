@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+
 <h1>
   <strong><%= @office.name %> in <%= @office.city %> </strong>
 </h1>
+
 <p>
   <%= @office.description %>
 </p>
@@ -22,7 +24,7 @@
 
 <p>
   <strong>Capacity:</strong>
-  <%= @office.max_capacity %>
+  <%= @office.max_capacity %> spaces left
 </p>
 
 <p>
@@ -40,3 +42,4 @@
 <%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |
 <%= link_to 'Back', offices_path, class:" btn btn-outline-primary" %>
 </p>
+
