@@ -21,12 +21,12 @@
 #   bio: "Developer"
 #   )
 
-# User.create!(
-#   first_name: "Amy",
-#   last_name: "Lu",
-#   email: "awesome@yahoo.com" ,
-#   bio: "smart girl"
-#   )
+User.create!(
+  first_name: "Amy",
+  last_name: "Lu",
+  email: "awesome@yahoo.com" ,
+  bio: "smart girl"
+  )
 
 # User.create!(
 #   first_name: "Ambar" ,
