@@ -1,0 +1,8 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :first_name, label: 'Your first name please' %>
+  <%= f.input :last_name, label: 'Your last name please' %>
+  <%= f.input :password %>
+  <%= f.input :email, label: 'user@domain.com' %>
+  <%= f.input :bio, label: 'Provide some description of yourself' %>
+  <%= f.button :submit %>
+<% end %>
