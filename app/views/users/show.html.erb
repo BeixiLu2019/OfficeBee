@@ -5,4 +5,5 @@
  <p> Last Name <%= @user.first_name%></p>
  <p> Bio <%= @user.bio%></p>
 
-
+<%= link_to "edit", edit_user_path(current_user) %>
+<%= link_to "delete Account", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
