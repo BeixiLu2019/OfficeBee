@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :users do
     resources :offices
   end
-
+    resources :users
 end
