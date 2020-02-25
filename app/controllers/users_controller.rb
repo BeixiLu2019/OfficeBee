@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    @user.save
     redirect_to root_path
 
   end
