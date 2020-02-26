@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <strong>Find me:</strong>
+    <strong>Address:</strong>
 
     <%= @office.address %>
   </p>
@@ -23,11 +23,15 @@
 
   <p>
     <strong>Capacity:</strong>
-    <%= @office.max_capacity %> spaces left
+    <%= @office.max_capacity %> spaces
   </p>
 
+  <!-- <p>
+    <strong>Capacity:</strong>
+    <%#= @office.max_capacity - %> spaces left
+  </p> -->
   <p>
-    <strong>Total Price:</strong>
+    <strong>Price per day per person:</strong>
     <%= @office.price %> Euro
   </p>
 
@@ -36,12 +40,8 @@
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
   <% end %>
-
-
   <p>
-
-
-
+    <br>
     <strong><%= link_to "Book Now!", new_office_booking_path(@office) %></strong>
     <%= link_to "delete this office", office_path, method: :delete, data: { confirm: "You sure?" }, class:" btn btn-outline-primary" %> |
     <%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |

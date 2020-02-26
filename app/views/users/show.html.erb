@@ -6,8 +6,10 @@
   <% if @user.photo.attached? %>
   <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
-   <p> First Name <%= @user.first_name%> Last Name <%= @user.last_name%></p>
-   <p> Bio <%= @user.bio%></p>
+   <!-- <p> First Name <%#= @user.first_name%> Last Name <%#= @user.last_name%></p> -->
+
+  <br>
+  <p> Bio <%= @user.bio%></p>
 
   <%= link_to "Update your profile information",  edit_user_registration_path %>
   <%= link_to "delete Account", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
