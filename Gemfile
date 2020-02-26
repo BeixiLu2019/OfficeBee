@@ -16,6 +16,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
 gem 'faker'
+gem 'pundit'
 
 #Gem to enable image upload from users
 gem 'cloudinary', '~> 1.12.0'
