@@ -7,5 +7,6 @@
   <%= f.input :max_capacity, label: 'Maximal Capacity' %>
   <%= f.input :description, label: 'Please describe your office' %>
   <%= f.input :price, label: 'Price' %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit %>
 <% end %>

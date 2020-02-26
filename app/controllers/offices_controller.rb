@@ -2,7 +2,30 @@ class OfficesController < ApplicationController
 before_action :set_office, only: [:show, :edit, :update, :destroy]
 
   def index
-    @offices = Office.all
+    if params[:search].nil?
+      @offices = Office.all
+    elsif params[:search][:date] == "" || params[:search][:city] == ""
+      redirect_to root_path
+    else
+      date = Date.parse(params[:search][:date])
+      @offices = Office.near(params[:search][:address], 40)
+      @offices = @offices.where(["start_date < ? and end_date > ?", date, date])
+      # Office.where(["city = ? and start_date < ? and end_date > ?", params[:search][:city], date, date])
+    end
+
+    # Mapbox Code
+    @offices_geo = @offices.geocoded #returns flats with coordinates
+
+    @markers = @offices_geo.map do |office|
+      {
+        lat: office.latitude,
+        lng: office.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { office: office })
+
+      }
+    end
+    #Mapbox Code
+
   end
 
   def show
@@ -26,6 +49,8 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   end
 
   def update
+    @office.update(office_params)
+    redirect_to office_path(@office)
   end
 
   def destroy
@@ -42,7 +67,7 @@ private
   end
 
   def office_params
-    params.require(:office).permit(:name, :city, :start_date, :end_date, :max_capacity, :price, :address, :description)
+    params.require(:office).permit(:city, :start_date, :end_date, :max_capacity, :price, :address, :description, :name, photos: [])
   end
 
 

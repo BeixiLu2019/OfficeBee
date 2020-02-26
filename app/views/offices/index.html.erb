@@ -1,13 +1,40 @@
+
 <div class="container">
+
+  <%= simple_form_for :search, url: offices_path, method: "get" do |f| %>
+    <div class="search-form-control form-group">
+      <input class="office_address form-control string required" type="text" name="search[address]" id="search_query" placeholder="Address" />
+      <input class="form-control string required" type="text" name="search[date]" id="search_query1" label = "Date" placeholder="Date" />
+
+      <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
+
   <p id="notice"><%= notice %></p>
+    <% if @offices.first.nil? %>
+      <h1>Sorry, there are no available offices </h1>
+    <% else %>
+      <h1>Available Offices in <%= @offices.first.city %></h1>
+      <% @offices.each do |office| %>
+        <h2> <%= link_to office.name, office_path(office) %></h2>
+        <p><%= office.city%>, <%= office.address %>, <%= office.price %> Euro per day </p>
+        <% if office.photos.attached? %>
+          <% office.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+        <% end %>
+      <% end %>
+      <div
+        id="map"
+        style="width: 100%;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+   <%= link_to "Back to search", root_path %>
+  <% end %>
 
-<h1>Offices#index</h1>
-<!-- <p>Find me in app/views/offices/index.html.erb</p> -->
-
-<% @offices.each do |office| %>
-<%#= @office.name %>
-<p>☞ <strong><%= link_to office.name, office_path(office) %></strong></p>
-<br>
-<% end %>
 
 </div>
