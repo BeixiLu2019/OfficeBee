@@ -4,12 +4,27 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   def index
     if params[:search].nil?
       @offices = Office.all
+    elsif params[:search][:date] == "" || params[:search][:city] == ""
+      redirect_to root_path
     else
       date = Date.parse(params[:search][:date])
-      @offices = Office.where(["city = ? and start_date < ? and end_date > ?", params[:search][:city], date, date])
+      @offices = Office.near(params[:search][:address], 40)
+      @offices = @offices.where(["start_date < ? and end_date > ?", date, date])
+      # Office.where(["city = ? and start_date < ? and end_date > ?", params[:search][:city], date, date])
     end
-    # params[:search][:date]
-    # Date.new(2001,2,3)
+
+    # Mapbox Code
+    @offices_geo = @offices.geocoded #returns flats with coordinates
+
+    @markers = @offices_geo.map do |office|
+      {
+        lat: office.latitude,
+        lng: office.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { office: office })
+
+      }
+    end
+    #Mapbox Code
 
   end
 
