@@ -21,7 +21,6 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
         lat: office.latitude,
         lng: office.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { office: office })
-
       }
     end
     #Mapbox Code
