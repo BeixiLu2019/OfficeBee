@@ -36,5 +36,8 @@
   € <%= @office.price %>
 </p>
 
-<%= link_to "delete this office", office_path %> |
+<strong><%= link_to "Book Now!", new_office_booking_path(@office) %></strong>
+<p>
+  <%= link_to "delete this office", office_path %> |
 <%= link_to 'Back', offices_path %>
+</p>
