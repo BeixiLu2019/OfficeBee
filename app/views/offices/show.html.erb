@@ -36,12 +36,14 @@
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
   <% end %>
-  <p>
 
-  <strong><%= link_to "Book Now!", new_office_booking_path(@office) %></strong>
-  <%= link_to "delete this office", office_path, class:" btn btn-outline-primary" %> |
-  <%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |
-  <%= link_to 'Back', root_path, class:" btn btn-outline-primary" %>
-  </p>
+<% end %>
+<p>
 
-</div>
+<strong><%= link_to "Book Now!", new_office_booking_path(@office) %></strong>
+<%= link_to "delete this office", office_path, method: :delete, class:" btn btn-outline-primary" %> |
+
+<%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |
+<%= link_to 'Back', root_path, class:" btn btn-outline-primary" %>
+</p>
+
