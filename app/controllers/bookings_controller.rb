@@ -3,26 +3,32 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
   end
+
   def create
     @booking = Booking.new(booking_params)
-    @booking.office = @office
+    @booking.office_id = @office.id
+    @booking.user_id = current_user.id
     @booking.save
     redirect_to dashboard_path
     # link needs to be updated to booking#SHOW
   end
-  def show
+
+  def show #confirmation page
     # total price of one booking should be added on show page
   end
 
-  def destroy
-
-  end
+  # def destroy
+  #   # office = booking.office
+  #   # booking.destroy
+  #   # redirect_to dashboard_path(booking)
+  #   # # link needs to be updated to booking#SHOW
+  # end
 
   private
   def set_office
     @office = Office.find(params[:office_id])
   end
   def booking_params
-    params.require(:office).permit(:date, :number_of_guests, :total_price, :office_id, :user_id)
+    params.require(:booking).permit(:date, :number_of_guests, :office_id, :user_id)
   end
 end

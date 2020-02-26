@@ -1,16 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://assets.wallpapersin4k.org/uploads/2017/04/Color-Block-Wallpaper.jpg);">
+  <div class="container">
+    <h1>Explore office spaces near you</h1>
+    <p>Can't find what you're looking for? Create your own!</p>
 
+    <%= simple_form_for :search, url: offices_path, method: "get" do |f| %>
 
-<%= simple_form_for :search, url: offices_path, method: "get" do |f| %>
+      <div class="search-form-control form-group">
+        <div class="searchbars">
+          <input class="form-control string required" type="text" name="search[city]" id="search_query" placeholder="City" />
+          <input class="form-control string required" type="text" name="search[date]" id="search_query1" label = "Date" placeholder="Date" />
+        </div>
+        <button name="button" type="submit" class="btn btn-ghost">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
 
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[city]" id="search_query" placeholder="City" />
-    <input class="form-control string required" type="text" name="search[date]" id="search_query1" label = "Date" placeholder="Date" />
-
-    <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
-    </button>
   </div>
-<% end %>
+</div>
+
+
 
