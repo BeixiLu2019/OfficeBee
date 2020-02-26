@@ -1,7 +1,7 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
     <% if @offices.first.nil? %>
-      <h1> Any offices available </h1>
+      <h1>Sorry, there are no available offices </h1>
     <% else %>
       <h1>Available Offices in <%= @offices.first.city %></h1>
       <% @offices.each do |office| %>
