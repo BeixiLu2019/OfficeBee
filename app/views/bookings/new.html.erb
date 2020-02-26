@@ -1,0 +1,6 @@
+<h2><strong>Book your office now: </strong><%= @office.name %> </h2>
+<%= simple_form_for([@office, @booking]) do |f| %>
+  <%= f.input :date, label: 'Date' %>
+  <%= f.input :number_of_guests, label: 'Number of Guests' %>
+  <%= f.button :submit %>
+<% end %>
