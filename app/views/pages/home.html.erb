@@ -1,14 +1,21 @@
-<h1>Office bee</h1>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://assets.wallpapersin4k.org/uploads/2017/04/Color-Block-Wallpaper.jpg);">
+  <div class="container">
+    <h1>Office Bee</h1>
+    <p>Explore office spaces near you or create your own!</p>
 
 
-  <%= simple_form_for :search, url: offices_path, method: "get" do |f| %>
-    <div class="search-form-control form-group">
-      <input class="office_address form-control string required" type="text" name="search[address]" id="search_query" placeholder="Address" />
-      <input class="form-control string required" type="text" name="search[date]" id="search_query1" label = "Date" placeholder="Date" />
-
-      <button name="button" type="submit" class="btn btn-flat">
-        <i class="fas fa-search"></i> Search
-      </button>
-    </div>
-  <% end %>
+    <%= simple_form_for :search, url: offices_path, method: "get" do |f| %>
+      <div class="search-form-control form-group">
+        <div class="searchbars">
+          <input class="office_address form-control string required" type="text" name="search[address]" id="search_query" placeholder="address" />
+          <input class="form-control string required" type="text" name="search[date]" id="search_query1" label = "Date" placeholder="Date" />
+        </div>
+        <button name="button" type="submit" class="btn btn-white">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+  </div>
+</div>
 
