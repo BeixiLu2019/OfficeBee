@@ -1,16 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Offices#show</h1>
-<p>Find me in app/views/offices/show.html.erb</p>
-
-<% if @office ==nil %>
-  <p>
-    <strong>No office available </strong>
-<% else %>
-    <strong>Name of Office in <%= @office.city %> </strong>
-  </p>
-<% end %>
-
+<h1>  <strong> <%= @office.name %> </strong> in <%= @office.city %></h1>
 
 <p>
   <%= @office.description %>
@@ -30,9 +20,16 @@
 </p>
 
 <p>
-  <strong>Total Price:</strong>
-  <%= @office.price %>
+  <strong>Capacity:</strong>
+  <%= @office.max_capacity %> spaces left
 </p>
+
+<p>
+  <strong>Total Price:</strong>
+  € <%= @office.price %>
+</p>
+
 
 <%= link_to "delete this office", office_path %>
 <%= link_to 'Back to search', root_path %>
+
