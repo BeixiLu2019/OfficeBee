@@ -11,7 +11,21 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/home";
+@import "pages/user";
 
 body {
   background-color: #e3ebec;
+}
+
+h2 {
+ margin-top: 10px;
+}
+
+a {
+  color: #848b92;
+  &:hover {
+      text-decoration: none;
+      color: orange;
+    }
 }
