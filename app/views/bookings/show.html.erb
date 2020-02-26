@@ -1,0 +1,19 @@
+<div>
+  <h2>Booking Confirmation</h2>
+  <br>
+  <h3><strong><%= @booking.office.name %></strong></h3>
+  <br>
+  <ul>
+    <li>
+      <p><strong>Date: <%= link_to @booking.date %></strong> for <strong><%= @booking.number_of_guests %></strong> persons </p3>
+      <p><strong>Address: </strong><%= @booking.office.address %></p>
+      <!-- <%#= API needed %> -->
+      <br>
+      <p><strong>Total Price: </strong><%= @booking.office.price %> Euros</p>
+      <%= link_to booking_path(@booking), method: :delete do %>
+      <%= '🗑' %>
+      <% end %>
+      <!--  booked   -->
+    </li>
+  </ul>
+</div>
