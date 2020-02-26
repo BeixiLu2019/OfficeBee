@@ -1,10 +1,14 @@
-<h1> Profile <%= @user.first_name%> <%= @user.last_name %></h1>
+<div class="container">
 
-<% if @user.photo.attached? %>
-<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
- <p> First Name <%= @user.first_name%> Last Name <%= @user.last_name%></p>
- <p> Bio <%= @user.bio%></p>
+  <h1> Profile <%= @user.first_name%> <%= @user.last_name %></h1>
 
-<%= link_to "edit", edit_user_path(current_user) %>
-<%= link_to "delete Account", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
+  <% if @user.photo.attached? %>
+  <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+   <p> First Name <%= @user.first_name%> Last Name <%= @user.last_name%></p>
+   <p> Bio <%= @user.bio%></p>
+
+  <%= link_to "edit", edit_user_path(current_user) %>
+  <%= link_to "delete Account", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
+
+</div>

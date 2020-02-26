@@ -20,6 +20,9 @@ gem 'faker'
 #Gem to enable image upload from users
 gem 'cloudinary', '~> 1.12.0'
 
+# Gem for map
+gem 'geocoder'
+
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :development do
