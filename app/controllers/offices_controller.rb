@@ -27,7 +27,7 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
     @office = Office.new(office_params)
     @office.user = current_user
     @office.save
-    redirect_to dashboard_path(@office)
+    redirect_to office_path(@office)
   end
 
   def edit
