@@ -2,7 +2,11 @@ class OfficesController < ApplicationController
 before_action :set_office, only: [:show, :edit, :update, :destroy]
 
   def index
-    @offices = Office.all
+
+    date = Date.parse(params[:search][:date])
+    # params[:search][:date]
+    # Date.new(2001,2,3)
+    @offices = Office.where(["city = ? and start_date < ? and end_date > ?", params[:search][:city], date, date])
   end
 
   def show
