@@ -6,9 +6,12 @@
   <% if @user.photo.attached? %>
   <%= cl_image_tag @user.photo.key, class: "avatar-border", height: 300, width: 300, crop: :fill %>
   <% end %>
+
   <br>
   <br>
    <p> Bio <%= @user.bio%></p>
+
+
 
   <%= link_to "Update", edit_user_registration_path %> |
   <%= link_to "Delete", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
