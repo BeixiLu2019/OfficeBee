@@ -25,8 +25,9 @@ class BookingsController < ApplicationController
   def destroy
     authorize @booking
     booking = Booking.find(params[:id])
+    @office = booking.office_id
     booking.destroy
-    redirect_to office_path(@booking.office_id)
+    redirect_to office_path(@office)
   end
 
   private

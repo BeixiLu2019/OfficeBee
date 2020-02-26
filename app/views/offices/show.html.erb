@@ -1,49 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>  <strong> <%= @office.name %> </strong> in <%= @office.city %></h1>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <%= @office.description %>
-</p>
+  <h1>  <strong> <%= @office.name %> </strong> in <%= @office.city %></h1>
 
-<p>
-  <strong>Find me:</strong>
+  <p>
+    <%= @office.description %>
+  </p>
 
-  <%= @office.address %>
-</p>
+  <p>
+    <strong>Find me:</strong>
 
-<p>
-  <strong>Availability:</strong>
-  <%= @office.start_date %>
-  —
-  <%= @office.end_date %>
-</p>
+    <%= @office.address %>
+  </p>
 
-<p>
-  <strong>Capacity:</strong>
-  <%= @office.max_capacity %> spaces left
-</p>
+  <p>
+    <strong>Availability:</strong>
+    <%= @office.start_date %>
+    —
+    <%= @office.end_date %>
+  </p>
 
-<p>
-  <strong>Total Price:</strong>
-  <%= @office.price %> Euro
-</p>
+  <p>
+    <strong>Capacity:</strong>
+    <%= @office.max_capacity %> spaces left
+  </p>
 
-<% if @office.photos.attached? %>
-  <% @office.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <p>
+    <strong>Total Price:</strong>
+    <%= @office.price %> Euro
+  </p>
+
+  <% if @office.photos.attached? %>
+    <% @office.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
   <% end %>
+
 <% end %>
 <p>
 
-<p>
-<% if @office.user == current_user %>
-my listing
-<% end  %>
-</p>
+
 
 <strong><%= link_to "Book Now!", new_office_booking_path(@office) %></strong>
 <%= link_to "delete this office", office_path, method: :delete, data: { confirm: "You sure?" }, class:" btn btn-outline-primary" %> |
 <%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |
 <%= link_to 'Back', root_path, class:" btn btn-outline-primary" %>
 </p>
+

@@ -1,12 +1,16 @@
-<%= simple_form_for @office do |f| %>
-  <%= f.input :name, label: 'Name' %>
-  <%= f.input :city, label: 'City' %>
-  <%= f.input :address, label: 'Address' %>
-  <%= f.input :start_date, label: 'Start date' %>
-  <%= f.input :end_date, label: 'Start date' %>
-  <%= f.input :max_capacity, label: 'Maximal Capacity' %>
-  <%= f.input :description, label: 'Please describe your office' %>
-  <%= f.input :price, label: 'Price' %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+
+  <%= simple_form_for @office do |f| %>
+    <%= f.input :name, label: 'Name' %>
+    <%= f.input :city, label: 'City' %>
+    <%= f.input :address, label: 'Address' %>
+    <%= f.input :start_date, label: 'Start date' %>
+    <%= f.input :end_date, label: 'Start date' %>
+    <%= f.input :max_capacity, label: 'Maximal Capacity' %>
+    <%= f.input :description, label: 'Please describe your office' %>
+    <%= f.input :price, label: 'Price' %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit %>
+  <% end %>
+
+</div>
