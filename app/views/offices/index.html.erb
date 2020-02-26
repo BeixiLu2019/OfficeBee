@@ -29,24 +29,28 @@
            <% end %>
           <% end %>
         <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
-        <div class="card-product-infos">
+          <div class="card-product-infos">
 
-          <h2> <%= link_to office.name, office_path(office) %></h2>
-          <p><%= office.city%>, <%= office.address %>, <%= office.price %> Euro per day </p>
+            <h2> <%= link_to office.name, office_path(office) %></h2>
+            <p><%= office.city%>, <%= office.address %>, <%= office.price %> Euro per day </p>
 
+          </div>
         </div>
-      </div>
-
          <% end %>
         <% end %>
+
+
       <br>
-      <div
-        id="map"
-        style="width: 100%;
-        height: 600px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
+      <div class="map-container">
+        <div
+          id="map"
+          style="width: 100%;
+          height: 600px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+      </div>
+
 
       <br>
    <%= link_to "Back to search", root_path %>
