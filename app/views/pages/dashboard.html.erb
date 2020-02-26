@@ -6,15 +6,15 @@
 
   <h2>My offices</h2>
   <!-- <p>Find me in app/views/offices/show.html.erb</p> -->
-
+    <br>
   <ul>
   <% current_user.offices.each do |office| %>
     <li>
-      <h3><strong>Name of Office: <%= link_to office.name, office_path(office)%></strong></h3>
+      <h3><strong><%= link_to office.name, office_path(office)%></strong></h3>
       <p><strong>Availability:</strong> <%= office.start_date %> — <%= office.end_date %></p>
        <p><strong>Capacity:</strong> <%= office.max_capacity %></p>
        <p><strong>Address: </strong><%= office.address %></p>
-       <p><strong>Price: </strong><%= office.price %>$</p>
+       <p><strong>Price: </strong><%= office.price %> Euro</p>
       <!--  booked   -->
       <!-- API map needed -->
     </li>
@@ -23,11 +23,12 @@
 
 
 <h2>My bookings</h2>
-
+<br>
 <ul>
   <% current_user.bookings.each do |booking| %>
   <li>
-    <h3><strong>Date: <%= link_to booking.date %></strong> for <strong><%= booking.number_of_guests %></strong> persons </h3>
+    <h3><strong><%= booking.office.name %></strong></h3>
+    <p><strong>Date: <%= link_to booking.date %></strong> for <strong><%= booking.number_of_guests %></strong> persons </p>
      <p><strong>Address: </strong><%= booking.office.address %></p>
      <!-- <%#= API needed %> -->
      <p><strong>Total Price: </strong><%= booking.office.price %> Euros</p>

@@ -5,7 +5,8 @@
   <br>
   <ul>
     <li>
-      <p><strong>Date: <%= link_to @booking.date %></strong> for <strong><%= @booking.number_of_guests %></strong> persons </p3>
+      <p><strong>Date: </strong><%= link_to @booking.date %>
+      <p><strong>Number of People: </strong><%= @booking.number_of_guests %></p>
       <p><strong>Address: </strong><%= @booking.office.address %></p>
       <!-- <%#= API needed %> -->
       <br>
