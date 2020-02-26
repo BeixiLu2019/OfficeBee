@@ -33,7 +33,6 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   def destroy
     @office.destroy
     redirect_to offices_path
-    redirect_to office_path(@office)
   end
 
 private
