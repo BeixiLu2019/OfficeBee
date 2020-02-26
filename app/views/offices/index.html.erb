@@ -12,6 +12,11 @@
             <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
             <% end %>
         <% end %>
+          <p>
+            <% if office.user == current_user %>
+            my listing
+            <% end  %>
+          </p>
       <% end %>
    <%= link_to "Back to search", root_path %>
   <% end %>
