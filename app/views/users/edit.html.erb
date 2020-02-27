@@ -1,13 +1,14 @@
 <div class="container">
-
-  <%= simple_form_for @user do |f| %>
-    <%= f.input :first_name, label: 'First name' %>
-    <%= f.input :last_name, label: 'Last name' %>
-    <%#= f.input :password %>
-    <%#= f.input :email, label: 'user@domain.com' %>
-    <%= f.input :bio, label: 'Tell us about yourself' %>
-    <%= f.input :photo, as: :file %>
-    <%= f.button :submit %>
-  <% end %>
-
+  <div class="form">
+    <%= simple_form_for @user do |f| %>
+    <p>hallo</p>
+      <%= f.input :first_name, label: 'First name' %>
+      <%= f.input :last_name, label: 'Last name' %>
+      <%#= f.input :password %>
+      <%#= f.input :email, label: 'user@domain.com' %>
+      <%= f.input :bio, label: 'Tell us about yourself' %>
+      <%= f.input :photo, as: :file %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
 </div>
