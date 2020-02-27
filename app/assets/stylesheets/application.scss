@@ -20,12 +20,22 @@ body {
 
 h2 {
  margin-top: 10px;
+ // font-weight: 300;
 }
 
 a {
   color: #848b92;
+  // font-weight: 300;
   &:hover {
       text-decoration: none;
       color: orange;
     }
 }
+
+// h1, h3, h4{
+//   font-weight: 300;
+// }
+
+// p {
+//   font-weight: 300;
+// }
