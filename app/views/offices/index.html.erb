@@ -10,6 +10,7 @@
 
       <button name="button" type="submit" class="btn btn-ghost">
         <i class="fas fa-search"></i> Search
+
       </button>
     </div>
     <% end %>
@@ -20,36 +21,49 @@
   <h1>Sorry, there are no available offices </h1>
   <% else %>
   <h1>Available Offices in <%= @offices.first.city %></h1>
-  <% @offices.each do |office| %>
 
-  <div class="card-product">
-    <% if office.photos.attached? %>
-    <% office.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <% end %>
-    <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
-    <div class="card-product-infos">
+  <div class="main-container">
+    <div class="cards">
+      <% @offices.each do |office| %>
+      <div class="card-product">
+        <% if office.photos.attached? %>
+        <% office.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <% else %>
+        <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+        <% end %>
 
-      <h2> <%= link_to office.name, office_path(office) %></h2>
-      <p><%= office.city%>, <%= office.address %>, <%= office.price %> Euro per day </p>
+        <div class="card-product-infos">
 
+          <h2> <%= link_to office.name, office_path(office) %></h2>
+          <p> <%= office.price %> Euro per day </p>
+          <p>availabe from: <%= office.start_date%> till <%= office.end_date %></p>
+          <p><%= office.max_capacity - office.bookings.sum(:number_of_guests) %> spaces left</p>
+
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+
+      <div class="map-container">
+        <div
+        id="map"
+        style="width: 100%;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+      </div>
     </div>
+
+    <br>
+    <%= link_to "Back to search", root_path %>
+    <br>
+    <p id="notice"><%= notice %></p>
+
   </div>
 
-  <% end %>
-  <% end %>
-  <br>
-  <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  >
-  </div>
 
-  <br>
-  <%= link_to "Back to search", root_path %>
-  <p id="notice"><%= notice %></p>
-</div>
+
+

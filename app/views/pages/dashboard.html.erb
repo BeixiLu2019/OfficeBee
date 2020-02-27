@@ -11,12 +11,17 @@
   <% current_user.offices.each do |office| %>
     <li>
       <h3><strong><%= link_to office.name, office_path(office)%></strong></h3>
-      <p><strong>Availability:</strong> <%= office.start_date %> — <%= office.end_date %></p>
-       <p><strong>Capacity:</strong> <%= office.max_capacity %></p>
-       <p><strong>Address: </strong><%= office.address %></p>
+      <p><strong> Availability: </strong> <%= office.start_date %> — <%= office.end_date %></p>
+       <p><strong> Capacity: </strong> <%= office.max_capacity %>, <%= office.max_capacity - office.bookings.sum(:number_of_guests) %> spaces left</p>
+       <p><strong> Address: </strong><%= office.address %></p>
        <p><strong>Price: </strong><%= office.price %> Euro</p>
-      <!--  booked   -->
-      <!-- API map needed -->
+        <% if office.photos.attached? %>
+          <% office.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+           <% end %>
+           <% else %>
+            <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+          <% end %>
     </li>
     <% end %>
   </ul>
@@ -27,11 +32,12 @@
 <ul>
   <% current_user.bookings.each do |booking| %>
   <li>
-    <h3><strong><%= booking.office.name %></strong></h3>
-    <p><strong>Date: <%= link_to booking.date %></strong> for <strong><%= booking.number_of_guests %></strong> persons </p>
+    <h3><strong><%= link_to booking.office.name, booking_path(booking) %></strong></h3>
+    <p><strong>Date: <%=booking.date %></strong> for <strong><%= booking.number_of_guests %></strong> persons </p>
      <p><strong>Address: </strong><%= booking.office.address %></p>
      <!-- <%#= API needed %> -->
      <p><strong>Total Price: </strong><%= booking.office.price %> Euros</p>
+
         <!--  booked   -->
   </li>
     <% end %>

@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_104908) do
   end
 
   create_table "offices", force: :cascade do |t|
-    t.string "city"
     t.date "start_date"
     t.date "end_date"
     t.integer "max_capacity"
@@ -62,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_104908) do
     t.string "name"
     t.float "latitude"
     t.float "longitude"
+    t.string "city"
     t.index ["user_id"], name: "index_offices_on_user_id"
   end
 

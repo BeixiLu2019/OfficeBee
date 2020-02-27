@@ -5,9 +5,9 @@
     <%= f.input :city, label: 'City' %>
     <%= f.input :address, label: 'Address' %>
     <%= f.input :start_date, label: 'Start date' %>
-    <%= f.input :end_date, label: 'Start date' %>
-    <%= f.input :max_capacity, label: 'Maximal Capacity' %>
-    <%= f.input :description, label: 'Please describe your office' %>
+    <%= f.input :end_date, label: 'End date' %>
+    <%= f.input :max_capacity, label: 'Maximum Capacity' %>
+    <%= f.input :description, label: 'Describe your office', :as => :text, input_html: { :style=> "width: 100%;", :rows => 4} %>
     <%= f.input :price, label: 'Price' %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit %>

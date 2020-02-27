@@ -13,8 +13,6 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
       authorize @offices
       @offices = Office.near(params[:search][:address], 40)
       @offices = @offices.where(["start_date < ? and end_date > ?", date, date])
-      # Office.where(["city = ? and start_date < ? and end_date > ?", params[:search][:city], date, date])
-
     end
 
     # Mapbox Code
@@ -34,7 +32,6 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   def show
     authorize @office
     @office = Office.find(params[:id])
-    # @booking = Booking.new
   end
 
   def new
