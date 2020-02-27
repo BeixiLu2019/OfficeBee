@@ -1,20 +1,21 @@
 <div class="container">
 
-  <h1> Profile <%= @user.first_name%> <%= @user.last_name %></h1>
-
-  <br>
-  <% if @user.photo.attached? %>
-  <%= cl_image_tag @user.photo.key, class: "avatar-border", height: 300, width: 300, crop: :fill %>
-  <% end %>
-
-  <br>
-  <br>
-   <p> Bio <%= @user.bio%></p>
+  <div class="profile-container">
+    <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, class: "avatar-border", height: 300, width: 300, crop: :fill %>
+    <% end %>
+    <div class="item-container">
+      <h1> Profile <%= @user.first_name%> <%= @user.last_name %></h1>
 
 
+       <p> Bio <%= @user.bio%></p>
+    </div>
+  </div>
 
-  <%= link_to "Update", edit_user_registration_path %> |
-  <%= link_to "Delete", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
+<br>
+    <%= link_to "Update", edit_user_registration_path %> |
+    <%= link_to "Delete", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
 
 </div>
+
 

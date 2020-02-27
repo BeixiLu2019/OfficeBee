@@ -12,16 +12,17 @@
         <i class="fas fa-search"></i> Search
         </button>
       </div>
-    <% end %>
-  </div>
+  <% end %>
+</div>
 
+<% if @offices.first.nil? %>
+  <h1>Sorry, there are no available offices </h1>
+<% else %>
+  <h1>Available Offices in <%= @offices.first.city %></h1>
 
-    <% if @offices.first.nil? %>
-      <h1>Sorry, there are no available offices </h1>
-    <% else %>
-      <h1>Available Offices in <%= @offices.first.city %></h1>
+<div class="main-container">
+<div class="cards">
       <% @offices.each do |office| %>
-<div class="card_map_box">
       <div class="card-product">
           <% if office.photos.attached? %>
           <% office.photos.each do |photo| %>
@@ -39,23 +40,27 @@
 
           </div>
         </div>
-         <% end %>
-        <% end %>
+      <% end %>
+    <% end %>
 
-
-      <br>
-      <div class="map-container">
-        <div
-          id="map"
-          style="width: 100%;
-          height: 600px;"
-          data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        ></div>
-      </div>
+  <div class="map-container">
+    <div
+      id="map"
+      style="width: 100%;
+      height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
 </div>
 
       <br>
    <%= link_to "Back to search", root_path %>
+   <br>
    <p id="notice"><%= notice %></p>
+
 </div>
+
+
+
+
