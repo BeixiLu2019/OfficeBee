@@ -38,7 +38,6 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
   def show
     authorize @office
     @office = Office.find(params[:id])
-    # @booking = Booking.new
   end
 
   def new

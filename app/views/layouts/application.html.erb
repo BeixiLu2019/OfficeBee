@@ -15,12 +15,8 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes'%>
-
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-      <!-- Do we need this class notice? It's in the way when designing -->
-      <!--  <p class="notice"><%= notice %></p> -->
-      <%= javascript_include_tag 'application' %>
-      <%= javascript_pack_tag 'application' %>
-  </body>
+    <%= yield %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+  </body >
 </html>

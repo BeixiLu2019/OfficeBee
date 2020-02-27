@@ -12,7 +12,7 @@
     <li>
       <h3><strong><%= link_to office.name, office_path(office)%></strong></h3>
       <p><strong> Availability: </strong> <%= office.start_date %> — <%= office.end_date %></p>
-       <p><strong> Capacity: </strong> <%= office.max_capacity %></p>
+       <p><strong> Capacity: </strong> <%= office.max_capacity %>, <%= office.max_capacity - office.bookings.sum(:number_of_guests) %> spaces left</p>
        <p><strong> Address: </strong><%= office.address %></p>
        <p><strong>Price: </strong><%= office.price %> Euro</p>
         <% if office.photos.attached? %>
@@ -22,9 +22,6 @@
            <% else %>
             <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
           <% end %>
-
-      <!--  booked   -->
-      <!-- API map needed -->
     </li>
     <% end %>
   </ul>

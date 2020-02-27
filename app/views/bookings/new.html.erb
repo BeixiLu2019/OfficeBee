@@ -3,7 +3,7 @@
   <div class="form">
     <%= simple_form_for([@office, @booking]) do |f| %>
       <%= f.input :date, label: 'Date' %>
-      <%= f.input :number_of_guests, label: 'Number of Guests' %>
+      <%= f.input :number_of_guests, label: 'Number of Guests', error_html: {id: " test "} %>
       <br>
       <%= f.button :submit, class:"btn btn-ghost btn-lg btn-block" %>
     <% end %>

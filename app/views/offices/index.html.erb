@@ -35,6 +35,7 @@
                   <h2> <%= link_to office.name, office_path(office) %></h2>
                   <p> <%= office.price %> Euro per day </p>
                   <p>Available from: <%= office.start_date%> till <%= office.end_date %></p>
+                  <p><%= office.max_capacity - office.bookings.sum(:number_of_guests) %> spaces left</p>
                 </div>
               </div>
             <% end %>
@@ -56,9 +57,4 @@
    <%= link_to "< Back", root_path %>
    <br>
    <p id="notice"><%= notice %></p>
-
-</div>
-
-
-
-
+  </div>
