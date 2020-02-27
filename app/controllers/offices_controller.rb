@@ -1,4 +1,5 @@
 class OfficesController < ApplicationController
+skip_before_action :authenticate_user!, only: [:index, :show]
 before_action :set_office, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,13 +7,18 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
     if params[:search].nil?
       @offices = Office.all
       authorize @offices
-    elsif params[:search][:date] == "" || params[:search][:city] == ""
-      redirect_to root_path
+    elsif params[:search][:date] == ""
+      @offices = Office.near(params[:search][:address], 40)
+      authorize @offices
+    elsif params[:search][:address] == ""
+      date = Date.parse(params[:search][:date])
+      @offices = @offices.where(["start_date < ? and end_date > ?", date+1, date-1])
+      authorize @offices
     else
       date = Date.parse(params[:search][:date])
       authorize @offices
       @offices = Office.near(params[:search][:address], 40)
-      @offices = @offices.where(["start_date < ? and end_date > ?", date, date])
+      @offices = @offices.where(["start_date < ? and end_date > ?", date+1, date-1])
     end
 
     # Mapbox Code
@@ -73,7 +79,7 @@ private
   end
 
   def office_params
-    params.require(:office).permit(:city, :start_date, :end_date, :max_capacity, :price, :address, :description, :name, photos: [])
+    params.require(:office).permit(:start_date, :end_date, :max_capacity, :price, :address, :description, :name, photos: [])
   end
 
 

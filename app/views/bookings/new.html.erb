@@ -1,10 +1,11 @@
 <div class="container">
-
-  <h2><strong>Book your office now: </strong><%= @office.name %> </h2>
-  <%= simple_form_for([@office, @booking]) do |f| %>
-    <%= f.input :date, label: 'Date' %>
-    <%= f.input :number_of_guests, label: 'Number of Guests', error_html: {id: " test "} %>
-    <%= f.button :submit %>
-  <#% end %>
-
+  <h1>Book <%= @office.name %> now</h1>
+  <div class="form">
+    <%= simple_form_for([@office, @booking]) do |f| %>
+      <%= f.input :date, label: 'Date' %>
+      <%= f.input :number_of_guests, label: 'Number of Guests', error_html: {id: " test "} %>
+      <br>
+      <%= f.button :submit, class:"btn btn-ghost btn-lg btn-block" %>
+    <% end %>
+  </div>
 </div>
