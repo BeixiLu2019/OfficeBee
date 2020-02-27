@@ -10,7 +10,7 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
     elsif params[:search][:date] == ""
       @offices = Office.near(params[:search][:address], 40)
       authorize @offices
-    elsif params[:search][:address].nil?
+    elsif params[:search][:address] == ""
       date = Date.parse(params[:search][:date])
       @offices = @offices.where(["start_date < ? and end_date > ?", date, date])
       authorize @offices
