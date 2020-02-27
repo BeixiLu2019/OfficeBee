@@ -35,8 +35,8 @@
     <%= @office.price %> Euro
   </p>
 
-  <% if office.photos.attached? %>
-    <% office.photos.each do |photo| %>
+  <% if @office.photos.attached? %>
+    <% @office.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
   <% else %>
