@@ -2,7 +2,7 @@
 
   <p id="notice"><%= notice %></p>
 
-  <h1>  <strong> <%= @office.name %> </strong> in <%= @office.city %></h1>
+  <h1>  <strong> <%= @office.name %> </strong> in <%= @office.address %></h1>
 
   <p>
     <%= @office.description %>
@@ -23,13 +23,9 @@
 
   <p>
     <strong>Capacity:</strong>
-    <%= @office.max_capacity %> spaces
+    <%= @office.max_capacity %> spaces, <%= @office.max_capacity - @office.bookings.sum(:number_of_guests) %> spaces left
   </p>
 
-  <!-- <p>
-    <strong>Capacity:</strong>
-    <%#= @office.max_capacity - %> spaces left
-  </p> -->
   <p>
     <strong>Price per day per person:</strong>
     <%= @office.price %> Euro

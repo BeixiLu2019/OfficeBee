@@ -6,14 +6,16 @@ class BookingsController < ApplicationController
   end
 
   def create
+      @booking = Booking.new(booking_params)
+      @booking.office_id = @office.id
+      @booking.user_id = current_user.id
+      authorize @booking
 
-    @booking = Booking.new(booking_params)
-    @booking.office_id = @office.id
-    @booking.user_id = current_user.id
-    authorize @booking
-    @booking.save
-    redirect_to booking_path(@booking)
-    # link needs to be updated to booking#SHOW
+      if @booking.save
+        redirect_to booking_path(@booking)
+      else
+        render :new
+      end
   end
 
   def show #confirmation page
