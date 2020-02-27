@@ -16,6 +16,18 @@
         </button>
       </div>
     <% end %>
+
+    <% @offices.each do |office| %>
+      <% if office.photos.attached? %>
+        <% office.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% else %>
+        <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+      <% end %>
+   <p><%= link_to office.name, office_path(office) %></p>
+    <% end %>
+
   </div>
 </div>
 
