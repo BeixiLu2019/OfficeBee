@@ -1,0 +1,24 @@
+  <h2>My bookings</h2>
+     <br>
+     <ul>
+      <% current_user.bookings.each do |booking| %>
+      <li>
+        <h3><strong><%= link_to booking.office.name, booking_path(booking) %></strong></h3>
+        <p><strong>Date: <%=booking.date %></strong> for <strong><%= booking.number_of_guests %></strong> persons </p>
+        <p><strong>Address: </strong><%= booking.office.address %></p>
+        <!-- <%#= API needed %> -->
+        <% if booking.office.photos.attached? %>
+        <% booking.office.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <% else %>
+        <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+        <% end %>
+        <p><strong>Total Price: </strong><%= booking.office.price %> Euros</p>
+
+        <!--  booked   -->
+      </li>
+      <% end %>
+    </ul>
+
+
