@@ -16,17 +16,54 @@
       </div>
     <% end %>
 
-    <% @offices.each do |office| %>
-      <% if office.photos.attached? %>
-        <% office.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-      <% else %>
-        <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
-      <% end %>
-   <p><%= link_to office.name, office_path(office) %></p>
-    <% end %>
-
   </div>
 </div>
 
+<div class="card-container">
+
+  <div class="card-columns">
+
+      <div class="card bg-info text-black text-center p-3">
+      <blockquote class="blockquote mb-0">
+        <p>"Seriously good"</p>
+        <footer class="blockquote-footer text-white">
+          <small>
+            Some <cite title="Source Title">rando</cite>
+          </small>
+        </footer>
+      </blockquote>
+    </div>
+
+    <% @offices.each do |office| %>
+
+      <div class="card">
+        <% if office.photos.attached? %>
+          <% office.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, id: "card-img", crop: :fill %>
+          <% end %>
+        <% else %>
+          <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" id="card-img" />
+        <% end %>
+
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to office.name, office_path(office) %></h5>
+          <p class="card-title"><%= office.description %></p>
+          <p class="card-text"><small class="text-muted"><%= office.address %></small></p>
+        </div>
+      </div>
+    <% end %>
+
+
+    <div class="card bg-info text-black text-center p-3">
+      <blockquote class="blockquote mb-0">
+        <p>No other platform like this! Office Bee helped me find my dream co-working space!</p>
+        <footer class="blockquote-footer text-white">
+          <small>
+            Someone famous in <cite title="Source Title">Le Wagon</cite>
+          </small>
+        </footer>
+      </blockquote>
+    </div>
+
+  </div>
+</div>
