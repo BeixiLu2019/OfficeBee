@@ -11,7 +11,7 @@
       <!-- <%#= API needed %> -->
       <br>
       <p><strong>Total Price: </strong><%= @booking.office.price %> Euros</p>
-      <%= link_to booking_path(@booking), method: :delete do %>
+      <%= link_to booking_path(@booking), method: :delete, data: { confirm: "Are you sure, that you would like to cancel your booking?" } do %>
       <%= '🗑' %>
       <% end %>
       <!--  booked   -->

@@ -23,11 +23,11 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
+    @office = @booking.office_id
+    @booking.destroy
     authorize @booking
-    booking = Booking.find(params[:id])
-    @office = booking.office_id
-    booking.destroy
-    redirect_to office_path(@office)
+    redirect_to offices_path
   end
 
   private
