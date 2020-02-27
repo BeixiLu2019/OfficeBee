@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_02_27_132944) do
   end
 
   create_table "offices", force: :cascade do |t|
-    t.string "city"
     t.date "start_date"
     t.date "end_date"
     t.integer "max_capacity"
