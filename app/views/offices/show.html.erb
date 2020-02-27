@@ -23,13 +23,9 @@
 
   <p>
     <strong>Capacity:</strong>
-    <%= @office.max_capacity %> spaces
+    <%= @office.max_capacity %> spaces, <%= @booking.office.max_capacity - @booking.number_of_guests %> spaces left
   </p>
 
-  <!-- <p>
-    <strong>Capacity:</strong>
-    <%#= @office.max_capacity - %> spaces left
-  </p> -->
   <p>
     <strong>Price per day per person:</strong>
     <%= @office.price %> Euro
