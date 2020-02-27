@@ -6,15 +6,18 @@ before_action :set_office, only: [:show, :edit, :update, :destroy]
     if params[:search].nil?
       @offices = Office.all
       authorize @offices
-    elsif params[:search][:date] == "" || params[:search][:city] == ""
-      redirect_to root_path
+    elsif params[:search][:date] == ""
+      @offices = Office.near(params[:search][:address], 40)
+      authorize @offices
+    elsif params[:search][:address].nil?
+      date = Date.parse(params[:search][:date])
+      @offices = @offices.where(["start_date < ? and end_date > ?", date, date])
+      authorize @offices
     else
       date = Date.parse(params[:search][:date])
       authorize @offices
       @offices = Office.near(params[:search][:address], 40)
       @offices = @offices.where(["start_date < ? and end_date > ?", date, date])
-      # Office.where(["city = ? and start_date < ? and end_date > ?", params[:search][:city], date, date])
-
     end
 
     # Mapbox Code
