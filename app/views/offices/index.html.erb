@@ -23,24 +23,25 @@
 <div class="main-container">
 <div class="cards">
       <% @offices.each do |office| %>
-
       <div class="card-product">
           <% if office.photos.attached? %>
           <% office.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
            <% end %>
+           <% else %>
+            <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
           <% end %>
-        <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+
           <div class="card-product-infos">
 
             <h2> <%= link_to office.name, office_path(office) %></h2>
-            <p><%= office.city%>, <%= office.address %>, <%= office.price %> Euro per day </p>
+            <p> <%= office.price %> Euro per day </p>
+            <p>availabe from: <%= office.start_date%> till <%= office.end_date %></p>
 
           </div>
         </div>
       <% end %>
     <% end %>
-  </div>
 
   <div class="map-container">
     <div
