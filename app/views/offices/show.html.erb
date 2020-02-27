@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <strong>Find me:</strong>
+    <strong>Address:</strong>
 
     <%= @office.address %>
   </p>
@@ -23,35 +23,30 @@
 
   <p>
     <strong>Capacity:</strong>
-    <%= @office.max_capacity %> spaces left
+    <%= @office.max_capacity %> spaces
   </p>
 
+  <!-- <p>
+    <strong>Capacity:</strong>
+    <%#= @office.max_capacity - %> spaces left
+  </p> -->
   <p>
-    <strong>Total Price:</strong>
+    <strong>Price per day per person:</strong>
     <%= @office.price %> Euro
   </p>
 
   <% if @office.photos.attached? %>
-    <% @office.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
+  <% @office.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
-
-<<<<<<< HEAD
-<% end %>
-=======
-
->>>>>>> c89cb378ec13d93bd93093734704aa385dc57ddd
-<p>
-
-<strong><%= link_to "Book Now!", new_office_booking_path(@office) %></strong>
-<%= link_to "delete this office", office_path, method: :delete, class:" btn btn-outline-primary" %> |
-
-<%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |
-<%= link_to 'Back', root_path, class:" btn btn-outline-primary" %>
-</p>
-
-<<<<<<< HEAD
-=======
+  <% end %>
+  <p>
+    <br>
+    <strong><%= link_to "Book Now!", new_office_booking_path(@office) %></strong>
+    <%= link_to "delete this office", office_path, method: :delete, data: { confirm: "You sure?" }, class:" btn btn-outline-primary" %> |
+    <%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |
+    <%= link_to 'Back', root_path, class:" btn btn-outline-primary" %>
+  </p>
+>>>>>>> 84e655b527ca9b88f776ec2b498b76ce974c3494
 </div>
 >>>>>>> c89cb378ec13d93bd93093734704aa385dc57ddd
