@@ -83,6 +83,9 @@ h1 {
 }
 
 .map-container {
+  height: 100vh;
+  position: sticky;
+  top: 0;
   width: 50%;
   margin: 20px 0px 0px 15px
 }
@@ -90,4 +93,5 @@ h1 {
 #map {
   border-radius: 4px;
 }
+
 
