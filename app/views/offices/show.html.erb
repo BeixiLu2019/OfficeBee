@@ -4,7 +4,7 @@
 
     <div class="office-details">
       <h1>  <strong> <%= @office.name %> </strong></h1>
-
+    <div class="image-and-text">
       <% if @office.photos.attached? %>
         <% @office.photos.each do |photo| %>
         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -15,6 +15,7 @@
       <br>
       <br>
       <h4><%= @office.description %></h4>
+    </div>
       <br>
       <h5>Address:</h5>
       <p><%= @office.address %></p>
@@ -36,16 +37,18 @@
 
     <div class="form-container">
       <h3>Book <%= @office.name %> now</h3>
-      <div class="form">
-        <%= simple_form_for([@office, @booking]) do |f| %>
-          <%= f.input :date, label: 'Date' %>
-          <%= f.input :number_of_guests, label: 'Number of Guests', error_html: {id: " test "} %>
-          <br>
-          <%= f.button :submit, class:"btn btn-ghost btn-lg btn-block" %>
-        <% end %>
+      <div class="show-form">
+        <div class="form">
+          <%= simple_form_for([@office, @booking]) do |f| %>
+            <%= f.input :date, label: 'Date' %>
+            <%= f.input :number_of_guests, label: 'Number of Guests', error_html: {id: " test "} %>
+            <br>
+            <%= f.button :submit, class:"btn btn-ghost btn-lg btn-block" %>
+          <% end %>
+        </div>
       </div>
     </div>
-    
+
   </div>
 
 </div>
