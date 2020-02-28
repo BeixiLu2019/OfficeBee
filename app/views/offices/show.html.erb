@@ -1,60 +1,54 @@
 <div class="container">
 
-  <p id="notice"><%= notice %></p>
+  <div class="show-container">
 
-  <h1>  <strong> <%= @office.name %> </strong></h1>
+    <div class="office-details">
+      <h1>  <strong> <%= @office.name %> </strong></h1>
 
-  <p>
-    <%= @office.description %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-
-    <%= @office.address %>
-  </p>
-
-  <p>
-    <strong>Availability:</strong>
-    <%= @office.start_date %>
-    —
-    <%= @office.end_date %>, <%= @office.max_capacity - @office.bookings.sum(:number_of_guests) %> spaces left
-  </p>
-
-
-
-
-  <p>
-    <strong>Price per day per person:</strong>
-    <%= @office.price %> Euro
-  </p>
-
-  <% if @office.photos.attached? %>
-    <% @office.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-  <% else %>
-    <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
-  <% end %>
-
-  <p>
-    <br>
-    <%= link_to "delete this office", office_path, method: :delete, data: { confirm: "You sure?" }, class:" btn btn-outline-primary" %> |
-    <%= link_to "edit this office", edit_office_path, class:" btn btn-outline-primary" %> |
-    <%= link_to 'back', root_path, class:" btn btn-outline-primary" %>
-  </p>
-</div>
-
-
-<div class="container">
-  <h1>Book <%= @office.name %> now</h1>
-  <div class="form">
-    <%= simple_form_for([@office, @booking]) do |f| %>
-      <%= f.input :date, label: 'Date' %>
-      <%= f.input :number_of_guests, label: 'Number of Guests', error_html: {id: " test "} %>
+      <% if @office.photos.attached? %>
+        <% @office.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% else %>
+        <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+      <% end %>
       <br>
-      <%= f.button :submit, class:"btn btn-ghost btn-lg btn-block" %>
-    <% end %>
+      <br>
+      <h4><%= @office.description %></h4>
+      <br>
+      <h5>Address:</h5>
+      <p><%= @office.address %></p>
+      <h5>Availability:</h5>
+      <p><%= @office.start_date %> to <%= @office.end_date %></p>
+      <p><%= @office.max_capacity - @office.bookings.sum(:number_of_guests) %> spaces left </p>
+      <h5>Price per day/person:</h5>
+      <p>€ <%= @office.price %> Euro</p>
+
+      <br>
+      <div class="links">
+        <%= link_to "Edit office", edit_office_path, class:" btn btn-ghost" %>
+        <%= link_to "Delete office", office_path, method: :delete, data: { confirm: "You sure?" }, class:" btn btn-ghost" %>
+      </div>
+        <%= link_to 'Back', root_path, class:" btn btn-ghost" %>
+
+    </div>
+
+
+    <div class="form-container">
+      <h3>Book <%= @office.name %> now</h3>
+      <div class="form">
+        <%= simple_form_for([@office, @booking]) do |f| %>
+          <%= f.input :date, label: 'Date' %>
+          <%= f.input :number_of_guests, label: 'Number of Guests', error_html: {id: " test "} %>
+          <br>
+          <%= f.button :submit, class:"btn btn-ghost btn-lg btn-block" %>
+        <% end %>
+      </div>
+    </div>
+    
   </div>
+
 </div>
+<br>
+<p id="notice"><%= notice %></p>
 
