@@ -2,12 +2,12 @@
 @import "home";
 
 h1 {
-  color: orange;
+  color: #373741;
   margin-top: 20px;
 }
 
 .cards {
-  width: 40%;
+  width: 50%;
 }
 
 .card-product {
@@ -47,8 +47,10 @@ h1 {
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.card-body .card-product-infos {
+  overflow: hidden;
+  margin: 6px;
+  word-wrap: break-word;
 }
 
 .searchbars {
@@ -74,8 +76,11 @@ h1 {
 }
 
 .map-container {
-  width: 60%;
+  width: 50%;
   margin: 20px 0px 0px 15px
 }
 
+#map {
+  border-radius: 4px;
+}
 
