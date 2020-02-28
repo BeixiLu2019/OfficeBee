@@ -17,27 +17,35 @@
         <% else %>
           <h1>Available Offices</h1>
 
+
+
       <div class="main-container">
+
         <div class="cards">
+
             <% @offices.each do |office| %>
-
-            <div class="card-product">
-              <% if office.photos.attached? %>
-                <% office.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <div class="card-product mb-3" style="max-width: 100%;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <% if office.photos.attached? %>
+                  <% office.photos.each do |photo| %>
+                    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                    <% end %>
+                    <% else %>
+                      <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
                   <% end %>
-                  <% else %>
-                    <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
-                <% end %>
+                </div>
 
-
-                <div class="card-product-infos">
-                  <h2> <%= link_to office.name, office_path(office) %></h2>
-                  <p> <%= office.price %> Euro per day </p>
-                  <p>Available from: <%= office.start_date%> till <%= office.end_date %></p>
-                  <p><%= office.max_capacity - office.bookings.sum(:number_of_guests) %> spaces left</p>
+                <div class="col-md-8">
+                  <div class="card-product-infos card-body">
+                     <h2 class="card-title"> <%= link_to office.name, office_path(office) %></h2>
+                    <p class="card-text"> <%= office.price %> Euro per day </p>
+                    <p class="card-text">Available from: <%= office.start_date%> till <%= office.end_date %></p>
+                    <p class="card-text"><small class="text-muted"><%= office.max_capacity - office.bookings.sum(:number_of_guests) %> spaces left</small></p>
+                  </div>
                 </div>
               </div>
+            </div>
             <% end %>
           </div>
 
