@@ -10,7 +10,7 @@
       <% current_user.bookings.each do |booking| %>
         <div class="card-product dashboard-card">
           <% if booking.office.photos.attached? %>
-            <%= cl_image_tag office.photos.first.key, height: 300, width: 400, crop: :fill, :id => "img_booking" %>
+            <%= cl_image_tag booking.office.photos.first.key, height: 300, width: 400, crop: :fill, :id => "img_booking" %>
           <% else %>
             <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
             <% end %>

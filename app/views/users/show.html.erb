@@ -13,9 +13,13 @@
   </div>
 
 <br>
-    <%= link_to "Update", edit_user_registration_path %> |
-    <%= link_to "Delete", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
 
+  <div class="links">
+    <%= link_to "Update", edit_user_registration_path, class:" btn btn-ghost" %>
+    <%= link_to "Delete", user_registration_path, method: :delete, data: { confirm: "You sure?" }, class:" btn btn-ghost" %>
+  </div>
 </div>
+
+<br>
 
 
