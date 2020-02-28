@@ -3,24 +3,28 @@
  <div class="main-container">
   <div class="cards">
     <% if current_user.offices.first.nil? %>
-      <p> List your office space now! </p>
-      <p> <%= link_to "Create an office listing", offices_path, class: "btn-ghost" %> </p>
+      <p class="no-offices-text"> List your office space now! </p>
+      <p> <%= link_to "Create an office listing", new_office_path, class: "btn-ghost btn-dashboard" %> </p>
       <% else %>
         <% current_user.offices.each do |office| %>
           <div class="card-product dashboard-card" >
             <% if office.photos.attached? %>
-              <% office.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :class => "img_dashboard" %>
-              <% end %>
+
+                <%= cl_image_tag office.photos.first.key, height: 300, width: 400, crop: :fill, :class => "img_dashboard" %>
+
             <% else %>
               <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
             <% end %>
           <div class="card-product-infos">
-            <h2><%= link_to office.name, office_path(office)%></h2>
-            <p> Availability:<%= office.start_date %> — <%= office.end_date %></p>
-            <p>Capacity: <%= office.max_capacity %></p>
-            <p> Address:<%= office.address %></p>
-            <p>Price: <%= office.price %> Euro</p>
+            <h2 class="dashboard_h2"><%= link_to office.name, office_path(office)%></h2>
+            <p class="dashboard-p"> Availability:<%= office.start_date %> — <%= office.end_date %></p>
+            <p class="dashboard-p">Capacity: <%= office.max_capacity %></p>
+            <p class="dashboard-p"> Address:<%= office.address %></p>
+            <p class="dashboard-p">Price: <%= office.price %> Euro</p>
+            <br>
+            <%= link_to "✏️", edit_office_path(office)%> |
+            <%= link_to "🗑", office_path(office), method: :delete, data: { confirm: "You sure?" }%>
+
         </div>
       </div>
       <% end %>
