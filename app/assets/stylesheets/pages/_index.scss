@@ -12,14 +12,14 @@ h1 {
 
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 180px;
   background: white;
   display: flex;
   align-items: center;
   margin-top: 20px;
   & img {
   height: 100%;
-  width: 150px;
+  width: 200px;
   object-fit: cover;
 }
   border-radius: 4px;
@@ -27,6 +27,12 @@ h1 {
   border-style: solid;
   border-color: #e3e3e3;
 }
+
+// .cards img {
+//   height: 100%;
+//   width: 150px;
+//   object-fit: cover;
+// }
 
 .card-product h2 {
   color: #848b92;
@@ -51,6 +57,7 @@ h1 {
   overflow: hidden;
   margin: 6px;
   word-wrap: break-word;
+  padding: 10px 30px 10px 20px
 }
 
 .searchbars {
