@@ -34,9 +34,7 @@
             <div class="card-product mb-3" style="max-width: 100%;">
 
                   <% if office.photos.attached? %>
-                  <% office.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, height: 180, width: 200, crop: :fill %>
-                    <% end %>
+                    <%= cl_image_tag office.photos.first.key, height: 180, width: 200, crop: :fill %>
                     <% else %>
                       <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
                   <% end %>
