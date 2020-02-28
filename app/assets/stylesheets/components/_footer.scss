@@ -1,16 +1,19 @@
 .footer {
   background: white;
+  // opacity: 0.3;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 80px;
   padding: 0px 50px;
+  margin-top: auto;
+  font-weight: bold;
   color: #FFC55A;
-  // font-weight: bold;
 }
 .footer-links {
   display: flex;
   align-items: center;
+  color: white !important;
 }
 
 .footer-links a {
