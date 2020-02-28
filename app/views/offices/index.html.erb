@@ -1,15 +1,22 @@
 
 <div class="container">
-    <div class="searchbars">
+    <div style="padding-top: 20px">
+      <a name="top"></a>
       <%= simple_form_for :search, url: offices_path, method: "get" do |f| %>
-        <div class="search-form-control form-group">
-            <input class="office_address form-control string required" type="text" name="search[address]" id="search_query" placeholder="Address" />
-            <input class="datepicker form-control string required" type="text" name="search[date]" id="search_query1" label = "Date" placeholder="Date" />
-            <button name="button" type="submit" class="btn btn-ghost">
-            <i class="fas fa-search"></i> Search
-            </button>
-          <% end %>
-        </div>
+        <div>
+            <div style="display:inline-block;">
+              <input class="office_address form-control string required" type="text" name="search[address]" id="search_query" placeholder="Address" />
+            </div>
+            <div style="display:inline-block;">
+              <input class="datepicker form-control string required" type="text" name="search[date]" id="search_query1" label = "Date" placeholder="Date" />
+            </div>
+            <div style="display:inline-block;">
+              <button name="button" type="submit" class="btn btn-ghost" style="margin: 0px;">
+                <i class="fas fa-search"></i> Search
+              </button>
+            </div>
+        <% end %>
+      </div>
     </div>
 
         <% if @offices.first.nil? %>
@@ -62,7 +69,7 @@
       </div>
 
     <br>
-   <%= link_to "< Back", root_path %>
+   <a href="#top">< Back to top</a>
    <br>
    <p id="notice"><%= notice %></p>
   </div>
