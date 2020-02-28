@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @offices = Office.all.sample(10)
   end
 
+  def dashbaord
+    @user = current_user
+  end
 
 end
 
