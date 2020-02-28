@@ -1,24 +1,33 @@
-  <h2>My bookings</h2>
-     <br>
-     <ul>
-      <% current_user.bookings.each do |booking| %>
-      <li>
-        <h3><strong><%= link_to booking.office.name, booking_path(booking) %></strong></h3>
-        <p><strong>Date: <%=booking.date %></strong> for <strong><%= booking.number_of_guests %></strong> persons </p>
-        <p><strong>Address: </strong><%= booking.office.address %></p>
-        <!-- <%#= API needed %> -->
-        <% if booking.office.photos.attached? %>
-        <% booking.office.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-        <% else %>
-        <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
-        <% end %>
-        <p><strong>Total Price: </strong><%= booking.office.price %> Euros</p>
+ <h2>You currently have <%= pluralize current_user.bookings.size, "booking"%> upcoming: </h2>
+ <br>
+ <div class="inner-container">
+  <div class="cards">
 
-        <!--  booked   -->
-      </li>
+    <% if current_user.bookings.first.nil? %>
+
+    <p> Book your office space now! </p>
+    <p> <%= link_to "Browse Offices", offices_path, class: "btn-ghost" %> </p>
+    <% else %>
+      <% current_user.bookings.each do |booking| %>
+        <div class="card-product dashboard-card">
+          <% if booking.office.photos.attached? %>
+            <% booking.office.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :id => "img_booking" %>
+            <% end %>
+          <% else %>
+            <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+            <% end %>
+          <div class="card-product-infos">
+            <h2><%= link_to booking.office.name, booking_path(booking) %></h2>
+            <p>Date: <%=booking.date %> for <%= booking.number_of_guests %> persons </p>
+            <p>Address: <%= booking.office.address %></p>
+            <p>Total Price:<%= booking.office.price %> Euros</p>
+          </div>
+        </div>
       <% end %>
-    </ul>
+    <% end %>
+  </div>
+</div>
+
 
 

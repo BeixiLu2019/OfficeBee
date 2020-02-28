@@ -1,5 +1,5 @@
 
-<div class="main_container">
+<div class="main_container" id="dashboard">
   <div class="dashboard-nav outsidebox">
     <div class="dashboard-nav nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <a class="dashboard-nav nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">My bookings</a>
@@ -11,17 +11,13 @@
   <div class="tab-content" id="v-pills-tabContent">
     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-<%= render "my_bookings" %>
-
-  </div>
+      <%= render "my_bookings" %>
+    </div>
     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-
-   <%= render "my_offices" %>
+      <%= render "my_offices" %>
+    </div>
 
   </div>
-
-
-</div>
 </div>
 
 

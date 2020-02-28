@@ -1,20 +1,30 @@
- <h2>My offices</h2>
-     <br>
-     <ul>
-      <% current_user.offices.each do |office| %>
-      <li>
-        <h3><strong><%= link_to office.name, office_path(office)%></strong></h3>
-        <p><strong> Availability: </strong> <%= office.start_date %> — <%= office.end_date %></p>
-        <p><strong> Capacity: </strong> <%= office.max_capacity %></p>
-        <p><strong> Address: </strong><%= office.address %></p>
-        <p><strong>Price: </strong><%= office.price %> Euro</p>
-      </li>
-      <% if office.photos.attached? %>
-      <% office.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
+ <h2>You currently have <%= pluralize current_user.offices.size, "office"%> listed: </h2>
+ <br>
+ <div class="main-container">
+  <div class="cards">
+    <% if current_user.offices.first.nil? %>
+      <p> List your office space now! </p>
+      <p> <%= link_to "Create an office listing", offices_path, class: "btn-ghost" %> </p>
       <% else %>
-      <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+        <% current_user.offices.each do |office| %>
+          <div class="card-product dashboard-card" >
+            <% if office.photos.attached? %>
+              <% office.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :class => "img_dashboard" %>
+              <% end %>
+            <% else %>
+              <img src="http://cdn.home-designing.com/wp-content/uploads/2018/06/industrial-style-home-office.jpg" />
+            <% end %>
+          <div class="card-product-infos">
+            <h2><%= link_to office.name, office_path(office)%></h2>
+            <p> Availability:<%= office.start_date %> — <%= office.end_date %></p>
+            <p>Capacity: <%= office.max_capacity %></p>
+            <p> Address:<%= office.address %></p>
+            <p>Price: <%= office.price %> Euro</p>
+        </div>
+      </div>
       <% end %>
-      <% end %>
-    </ul>
+    <% end %>
+  </div>
+</div>
+

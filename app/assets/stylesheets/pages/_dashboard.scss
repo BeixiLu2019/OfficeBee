@@ -1,6 +1,5 @@
 .main_container {
   display: flex;
-
 }
 
 .box {
@@ -8,23 +7,17 @@
   padding: 20px;
 }
 
-h1 {
-  text-align: center;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  margin-top: 0px;
-  margin-block-start: 0;
-  margin-block-end: 0;
-
-
-}
 .margin-top {
   margin-top: 60px;
 
 }
 
+.inner-container {
+  padding: 10px;
+}
+
 .dashbaord-option{
-  padding: 10px 10px;
+  padding: 20px 20px;
   width: 130px;
   margin: 0;
 }
@@ -41,3 +34,30 @@ h1 {
   background-color: #FFC65A;
   width: 130px;
 }
+
+#v-pills-tab {
+    height: calc(100vh - 70px);
+}
+
+#v-pills-home {
+  padding: 20px 40px;
+}
+
+#v-pills-profile {
+  padding: 20px 40px;
+}
+
+.dashboard-card {
+ height: 250px;
+ // width: 300px;
+ img {
+  width: 300px;
+ }
+}
+
+.dashboard-nav .nav-link {
+  padding: 30px 5px;
+}
+
+
+
