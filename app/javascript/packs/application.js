@@ -13,4 +13,4 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 initAutocomplete()
 
-import "../plugins/flatpickr"
+import "../plugins/flatpickr";

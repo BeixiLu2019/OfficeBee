@@ -1,7 +1,7 @@
   <div class="form">
     <%= simple_form_for @office do |f| %>
       <%= f.input :name, label: 'Name' %>
-      <%= f.input :address, label: 'Address' %>
+      <%= f.input :address, label: 'Address', class: "office_address"%>
       <%= f.input :start_date, label: 'Start date' %>
       <%= f.input :end_date, label: 'End date' %>
       <%= f.input :max_capacity, label: 'Maximum Capacity' %>
