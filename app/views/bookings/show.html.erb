@@ -1,20 +1,42 @@
-<div>
-  <h2>Booking Confirmation</h2>
-  <br>
-  <h3><strong><%= @booking.office.name %></strong></h3>
-  <br>
-  <ul>
-    <li>
-      <p><strong>Date: </strong><%= link_to @booking.date %>
-      <p><strong>Number of People: </strong><%= @booking.number_of_guests %></p>
-      <p><strong>Address: </strong><%= @booking.office.address %></p>
-      <!-- <%#= API needed %> -->
+<div class="container">
+  <div>
+    <h2><strong>Thanks for your booking @ <%= @booking.office.name %></strong></h2>
+    <br>
+      <% if @booking.office.photos.attached? %>
+        <% @booking.office.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <% end %>
       <br>
-      <p><strong>Total Price: </strong><%= @booking.office.price %> Euros</p>
-      <%= link_to booking_path(@booking), method: :delete, data: { confirm: "Are you sure, that you would like to cancel your booking?" } do %>
-      <%= '🗑' %>
-      <% end %>
-      <!--  booked   -->
-    </li>
-  </ul>
+      <br>
+      <p><strong>Date: </strong><%= link_to @booking.date %>
+        <p><strong>Number of People: </strong><%= @booking.number_of_guests %></p>
+        <p><strong>Address: </strong><%= @booking.office.address %></p>
+        <p><strong>Total Price: </strong><%= @booking.office.price %> Euros</p>
+        <%= link_to 'cancel my booking   ', booking_path(@booking), class:"btn btn-ghost", method: :delete, data: { confirm: "Are you sure, that you would like to cancel your booking?" } %>
+        <%= link_to "go to my dashboard", dashboard_path, class:"btn btn-ghost" %>
+      </li>
+    </ul>
+  </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
